@@ -2,9 +2,9 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = {
-  entry : './server/react_front_end/src/index.js',
+  entry : './src/index.js',
   output:{
-    path: path.resolve('./', "server/react_front_end/build"),
+    path: path.resolve('./src/build'),
     filename: 'bundle.js'
   },
   module:{

@@ -9554,6 +9554,8 @@ var _react = __webpack_require__(50);
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(183);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9581,8 +9583,39 @@ var App = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        'Hi '
+        { className: 'main-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'middle' },
+          _react2.default.createElement(
+            'div',
+            { className: 'center' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              ' Grant Me'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              ' Start Your Business Today'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'selections' },
+              _react2.default.createElement(
+                'button',
+                null,
+                'Loans and Grants'
+              ),
+              _react2.default.createElement(
+                'button',
+                null,
+                'Licenses and Permits'
+              )
+            )
+          )
+        )
       );
     }
   }]);
@@ -22075,6 +22108,12 @@ var _App2 = _interopRequireDefault(_App);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.querySelector('#root'));
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
