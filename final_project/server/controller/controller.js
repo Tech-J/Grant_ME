@@ -2,9 +2,10 @@ const city_state = require('../models/api')
 const controller = {}
 
 controller.index = (req,res)=>{
+
 city_state.index()
 .then((data)=>{
-  console.log(data)
+  res.json(data)
 })
 .catch((error)=>{
   console.log(error)
@@ -12,15 +13,14 @@ city_state.index()
 }
 
 controller.show = (req,res)=>{
-city_state.show()
+const state_code = req.body.data
+city_state.show(state_code)
 .then((data)=>{
-  console.log(data)
+  res.json(data)
 })
 .catch((error)=>{
   console.log(error)
 })
-
-
 }
 
 

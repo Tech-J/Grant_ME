@@ -13,7 +13,7 @@ background-color: rgb(164,207,19);
 }
 .middle{
 height: 100%;
-width: 50vw;
+width: 75vw;
 margin: 0 auto;
 display: flex;
 flex-direction: column;
@@ -22,7 +22,7 @@ justify-content: center;
 .center{
   border-radius: 2%;
   width: 50vw;
-  height:50vh;
+  height:auto;
   font-family: 'Patua One', cursive;
   color: white;
   font-size: 20pt;
@@ -50,7 +50,7 @@ flex-direction: row;
   outline: none;
 }
 nav{
-position: fixed;
+/*position: fixed;*/
 width: 100%;
 }
 nav ul{
@@ -67,4 +67,14 @@ footer h3{
 .main{
   height:100vh;
   width:100vw;
+}
+
+.info{
+    height: 200px;
+    width:100%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+
+
 }
