@@ -28095,6 +28095,10 @@ var _Selection = __webpack_require__(259);
 
 var _Selection2 = _interopRequireDefault(_Selection);
 
+var _Select = __webpack_require__(274);
+
+var _Select2 = _interopRequireDefault(_Select);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28115,7 +28119,9 @@ var Form = function (_Component) {
       states: null,
       cities: null,
       state_code: null,
-      county: null
+      county: null,
+      options: null,
+      selection: null
     };
     return _this;
   }
@@ -28128,6 +28134,12 @@ var Form = function (_Component) {
       _axios2.default.get('http://localhost:8080/api/states').then(function (data) {
         console.log(data.data);
         _this2.statesStateUpdate(data.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+      _axios2.default.get('http://localhost:8080/api/options').then(function (data) {
+        console.log(data);
+        _this2.optionsSet(data.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -28158,6 +28170,13 @@ var Form = function (_Component) {
       });
     }
   }, {
+    key: 'optionsSet',
+    value: function optionsSet(data) {
+      this.setState({
+        options: data
+      });
+    }
+  }, {
     key: 'onChangeStates',
     value: function onChangeStates(data) {
       console.log(data);
@@ -28176,11 +28195,19 @@ var Form = function (_Component) {
       });
     }
   }, {
+    key: 'onChangeOptions',
+    value: function onChangeOptions(data) {
+      this.setState({
+        selection: data
+      });
+    }
+  }, {
     key: 'getInfo',
     value: function getInfo(e) {
       e.preventDefault();
       console.log(this.state.state_code);
       console.log(this.state.county);
+      console.log(this.state.selection);
     }
   }, {
     key: 'render',
@@ -28189,6 +28216,7 @@ var Form = function (_Component) {
 
       var submit = null;
       this.state.state_code !== null && this.state.county !== null ? submit = _react2.default.createElement('input', { type: 'submit' }) : submit;
+      console.log(this.state.options);
       return _react2.default.createElement(
         'div',
         { className: 'main-container' },
@@ -28200,6 +28228,12 @@ var Form = function (_Component) {
             { onSubmit: function onSubmit(e) {
                 _this4.getInfo(e);
               } },
+            _react2.default.createElement(
+              'label',
+              null,
+              'Options'
+            ),
+            _react2.default.createElement(_Select2.default, { values: this.state.options, value: this.onChangeOptions.bind(this) }),
             _react2.default.createElement(
               'label',
               null,
@@ -29710,8 +29744,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import Select from 'react-select';
 
 var Selection = function Selection(props) {
-
+  console.log(props);
   var selectionCreator = function selectionCreator(data) {
+    console.log(data);
     if (data === null || data === undefined) {
       return _react2.default.createElement(
         'option',
@@ -29724,6 +29759,69 @@ var Selection = function Selection(props) {
           'option',
           { key: index, value: data.state_code },
           data.state
+        );
+      });
+    }
+  };
+  return _react2.default.createElement(
+    'select',
+    { onChange: function onChange(e) {
+        props.value(e.target.value);
+      } },
+    selectionCreator(props.values)
+  );
+};
+exports.default = Selection;
+
+/***/ }),
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(50);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import Select from 'react-select';
+
+var Selection = function Selection(props) {
+  console.log(props);
+  var selectionCreator = function selectionCreator(data) {
+    console.log(data);
+    if (data === null || data === undefined) {
+      return _react2.default.createElement(
+        'option',
+        null,
+        'Select One'
+      );
+    } else {
+      return data.map(function (data, index) {
+        return _react2.default.createElement(
+          'option',
+          { key: index, value: data.selection },
+          data.selection
         );
       });
     }

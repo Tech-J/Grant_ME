@@ -4,12 +4,12 @@ import React from 'react';
 const Selection = (props) =>{
 console.log(props)
 const selectionCreator=(data)=>{
-  console.log(data)
-if (data === null|| data===undefined){
+console.log(data)
+if (data === null || data===undefined){
   return(<option>Select One</option>)
 }else{
       return data.map((data,index)=>{
-          return(<option key={index} value={data.state_code} >{data.state}</option>)
+          return(<option key={index} value={data.selection} >{data.selection}</option>)
       })
 }
 }

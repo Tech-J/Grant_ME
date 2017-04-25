@@ -2,7 +2,6 @@ const city_state = require('../models/api')
 const controller = {}
 
 controller.index = (req,res)=>{
-
 city_state.index()
 .then((data)=>{
   res.json(data)
@@ -21,6 +20,29 @@ city_state.show(state_code)
 .catch((error)=>{
   console.log(error)
 })
+}
+
+controller.options = (req,res)=>{
+city_state.options()
+.then((data)=>{
+  console.log(data)
+  res.json(data)
+})
+.catch((error)=>{
+  console.log(error)
+})
+}
+
+controller.find = (req, res)=>{
+console.log(req)
+city_state.find()
+.then((data)=>{
+console.log(data)
+})
+.catch((error)=>{
+  console.log(error)
+})
+
 }
 
 

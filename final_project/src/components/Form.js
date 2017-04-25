@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import App from './App'
 import Axios from 'axios'
 import Selection from './Selection'
+import Select from './Select'
 class Form extends Component{
 
 constructor(){
@@ -10,7 +11,9 @@ constructor(){
     states:null,
     cities:null,
     state_code:null,
-    county:null
+    county:null,
+    options:null,
+    selection:null
   }
 }
 
@@ -19,6 +22,14 @@ componentDidMount(){
   .then((data)=>{
     console.log(data.data)
     this.statesStateUpdate(data.data)
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+  Axios.get('http://localhost:8080/api/options')
+  .then((data)=>{
+    console.log(data)
+    this.optionsSet(data.data)
   })
   .catch((error)=>{
     console.log(error)
@@ -47,6 +58,12 @@ citiesStateUpdate(data){
   })
 }
 
+optionsSet(data){
+  this.setState({
+    options: data
+  })
+}
+
 onChangeStates(data){
   console.log(data)
   this.setState({
@@ -63,11 +80,17 @@ onChangeCounty(data){
   })
 }
 
-getInfo(e){
-e.preventDefault()
-console.log(this.state.state_code)
-console.log(this.state.county)
+onChangeOptions(data){
+this.setState({
+  selection:data
+})
+}
 
+getInfo(e){
+  e.preventDefault()
+  console.log(this.state.state_code)
+  console.log(this.state.county)
+  console.log(this.state.selection)
 }
 
 
@@ -75,18 +98,21 @@ console.log(this.state.county)
 render(){
   let submit = null
   this.state.state_code!==null && this.state.county!==null ? submit =<input type="submit"/> : submit
+  console.log(this.state.options)
 return(
           <div className="main-container">
               <div className="middle">
-                      <form onSubmit={(e)=>{this.getInfo(e)}}>
-                      <label>State</label>
+                    <form onSubmit={(e)=>{this.getInfo(e)}}>
+                    <label>Options</label>
+                    <Select values={this.state.options} value={this.onChangeOptions.bind(this)}/>
+                    <label>State</label>
                     <Selection values={this.state.states} value={this.onChangeStates.bind(this)}/>
-                     <label>Cities</label>
+                    <label>Cities</label>
                     <Selection values={this.state.cities}   value={this.onChangeCounty.bind(this)}/>
                     {submit}
                     </form>
                   </div>
-              </div>
+            </div>
   )
 }
 }
