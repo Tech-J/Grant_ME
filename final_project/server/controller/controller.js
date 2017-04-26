@@ -32,12 +32,23 @@ city_state.options()
   console.log(error)
 })
 }
-
 controller.find = (req, res)=>{
-console.log(req)
-city_state.find()
+console.log(req.body)
+city_state.find(req.body)
 .then((data)=>{
-console.log(data)
+res.json(data)
+})
+.catch((error)=>{
+  console.log(error)
+})
+}
+
+controller.loans = (req, res)=>{
+city_state.loans()
+.then((data)=>{
+  console.log(data)
+  newData = JSON.parse(data.body)
+  res.json(newData)
 })
 .catch((error)=>{
   console.log(error)

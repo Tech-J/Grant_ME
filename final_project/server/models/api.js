@@ -1,5 +1,5 @@
 const db =require('../database/grantMe')
-const reuestify = require('requestify')
+const requestify = require('requestify')
 
 const city_state = {}
 
@@ -18,10 +18,13 @@ city_state.options=()=>{
   return db.any('SELECT * FROM business_type')
 }
 
-city_state.find = () =>{
-  return requestify.get('http://api.sba.gov/license_permit/state_and_city/child%20care%20services/ca/orange%20county.json'
-)
-
+city_state.find = (data) =>{
+  console.log(data)
+  return requestify.get('http://api.sba.gov/license_permit/state_and_city/'+data.selection+'/'+data.code+'/'+data.county+'.json')
 }
+city_state.loans = ()=>{
+  return requestify.get('http://api.sba.gov/loans_grants/federal.json')
+}
+
 
 module.exports = city_state;

@@ -15,6 +15,7 @@ if (data === null|| data===undefined){
 }
 return(
   <select onChange={(e)=>{props.value(e.target.value)}}>
+    <option>Select</option>
     {selectionCreator(props.values)}
     </select>
   )

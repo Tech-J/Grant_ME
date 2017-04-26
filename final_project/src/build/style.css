@@ -1,24 +1,43 @@
 body{
   margin:0;
-      height: 100vh;
+
 }
 html{
 /*    height: 90vh;
   width:100vw;*/
 }
 .main-container{
-height: 95vh;
+height: auto;
 width: 100vw;
 background-color: rgb(164,207,19);
 }
 .middle{
-height: 100%;
+height: 100vh;
 width: 75vw;
 margin: 0 auto;
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
 }
+.middlelg{
+width: 75vw;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.middlelg h1,h3{
+  font-family: 'Patua One', cursive;
+    color: white;
+      margin: 5px;
+}
+.lg{
+  width: 100%;
+}
+
 .center{
   border-radius: 2%;
   width: 50vw;
@@ -59,13 +78,16 @@ nav ul{
 }
 footer{
   margin:0;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
 }
 footer h3{
   margin: 0;
   padding: 5px;
 }
 .main{
-  height:100vh;
+
   width:100vw;
 }
 
@@ -75,6 +97,28 @@ footer h3{
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
-
-
+}
+.forms{
+  width:50%;
+    font-family: 'Patua One', cursive;
+  color: white;
+  font-size: 20pt;
+display: flex;
+flex-direction: column;
+}
+.forms h1,h3{
+text-align: center;
+}
+select{
+  width: 50%;
+}
+.results{
+width: 100%;
+height:auto;
+}
+form{
+  margin:0 auto;
+}
+select{
+  width: 100%;
 }

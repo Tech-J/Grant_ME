@@ -13,7 +13,7 @@ stateSet(data){
 this.setState({
   example:data
 })
-window.location='/form'
+
 }
 
 
@@ -27,8 +27,8 @@ render(){
                       <h1> Grant Me</h1>
                       <p> Start Your Business Today</p>
                       <div className="selections">
-                      <button onClick={(e)=>{this.stateSet(e.target.textContent)}}>Loans and Grants</button>
-                      <button onClick={(e)=>{this.stateSet(e.target.textContent)}}>Licenses and Permits</button>
+                      <button onClick={(e)=>{window.location='/Loans_Grants'}}>Loans and Grants</button>
+                      <button onClick={(e)=>{window.location='/License_Permits'}}>Licenses and Permits</button>
                       </div>
                   </div>
               </div>
